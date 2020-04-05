@@ -1,9 +1,10 @@
 #include <Indutive.hpp>
 
-Indutive::Indutive(int pin, int n, double d){
+Indutive::Indutive(char pin, char nc, double d, char div){
     pin_attached = pin;
-    n_cog = n;
+    n_cog = nc;
     diameter = d;
+    divide = div;
     length = diameter*PI;
     count = 0;
     time = millis();
@@ -15,7 +16,7 @@ Indutive::Indutive(int pin, int n, double d){
 
 void Indutive::readSensor(){
     count++;
-    if(count >= n_cog){
+    if(count >= (n_cog/divide)){
         count = 0;
         delta_time = (millis() - time) / 1000;
         time = millis();
@@ -28,6 +29,7 @@ void Indutive::calcVel(){
     last_m_s = vel_m_s;
     last_km_h = vel_km_h;
     vel_m_s = length/delta_time;
+    vel_m_s /= divide;
     vel_km_h = 3.6 * vel_m_s;
 }
 

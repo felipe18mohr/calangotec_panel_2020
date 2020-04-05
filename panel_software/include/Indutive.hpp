@@ -5,7 +5,7 @@
 
 class Indutive{
     public:
-        Indutive(int pin, int n, double d);
+        Indutive(char pin, char nc, double d, char div);
         void readSensor();
         void calcVel();
         void calcAccel();
@@ -15,9 +15,10 @@ class Indutive{
         double accel_km_h2;
         
     private:
-        int pin_attached;
-        int n_cog;
-        int count;
+        char pin_attached;
+        char n_cog;
+        char divide;
+        char count;
         double diameter;
         double length;
         unsigned long time;
