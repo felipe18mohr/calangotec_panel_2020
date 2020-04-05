@@ -1,6 +1,6 @@
 #include <Indutive.hpp>
 
-Indutive::Indutive(char pin, char nc, double d, char div){
+Indutive::Indutive(byte pin, byte nc, double d, byte div){
     pin_attached = pin;
     n_cog = nc;
     diameter = d;

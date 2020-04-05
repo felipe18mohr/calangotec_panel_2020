@@ -5,11 +5,11 @@
 
 class Capacitive{
     public:
-        Capacitive::Capacitive(char cap1, char cap2);
+        Capacitive::Capacitive(byte cap1, byte cap2);
         void readSensors();
-        char level;
+        byte level;
     private:
-        char capl, caph;
+        byte capl, caph;
         bool low_level;
         bool high_level;
 };

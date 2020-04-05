@@ -1,6 +1,6 @@
 #include <Capacitive.hpp>
 
-Capacitive::Capacitive(char cap1, char cap2){
+Capacitive::Capacitive(byte cap1, byte cap2){
     capl = cap1; 
     caph = cap2;
 }
