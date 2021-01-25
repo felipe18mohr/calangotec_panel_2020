@@ -8,4 +8,7 @@
 #define cog 16
 #define diam 0.518
 
+#define angle 65.0  //Ângulo para contar o giro
+#define central_angle 2.5 //Ângulo para posição central
+
 #endif
