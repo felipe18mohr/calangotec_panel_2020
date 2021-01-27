@@ -6,7 +6,7 @@
 class Capacitive{
     public:
         Capacitive::Capacitive(byte cap1, byte cap2);
-        void readSensors();
+        byte readSensors();
         byte level;
     private:
         byte capl, caph;

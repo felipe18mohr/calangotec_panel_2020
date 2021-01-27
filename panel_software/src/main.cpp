@@ -6,10 +6,12 @@
 #include <Indutive.cpp>
 #include <Capacitive.cpp>
 #include <Gyroscope.cpp>
+#include <SDCard.cpp>
 
 Indutive ind(pin_ind, cog, diam, 2);
 Capacitive cap(pin_capl, pin_caph);
 Gyroscope gyro(angle, central_angle);
+SDCard sdcard("log.txt", 1);
 DS3231 rtc;
 
 void printInfos();
@@ -18,15 +20,20 @@ void indCB();
 
 void setup() {
   attachInterrupt(digitalPinToInterrupt(pin_ind), indCB, RISING);
+  sdcard.initSDCard(pin_chip_select);
   setRTC();
 }
 
 void loop() {
+  static bool h12, PM;
   cap.readSensors();
   gyro.steeringWheelTurning();
+  sdcard.savePeriodically(rtc.getHour(h12,PM), rtc.getMinute(), rtc.getSecond(),
+                          gyro.left_cont, gyro.right_cont, cap.level, 
+                          ind.vel_km_h, ind.accel_km_h2);
 }
 
-void setRTC(){
+void setRTC() {
   rtc.setSecond(8);
   rtc.setMinute(29);
   rtc.setHour(13);
@@ -43,7 +50,7 @@ void indCB() {
 
 void printInfos() {
   static bool h12, PM;
-  Serial.print(rtc.getHour(h12, PM); Serial.print(":");
+  Serial.print(rtc.getHour(h12, PM)); Serial.print(":");
   Serial.print(rtc.getMinute()); Serial.print(":");
   Serial.println(rtc.getSecond());
 
