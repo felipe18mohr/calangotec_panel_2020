@@ -6,8 +6,8 @@ Gyroscope::Gyroscope(double ang1, double ang2) :
   last_state = 'c';
   ang = ang1;
   cent_ang = ang2;
-  left_cont = 0;
-  right_cont = 0;
+  left_count = 0;
+  right_count = 0;
 
   Wire.begin();
   mpu6050.begin();
@@ -22,14 +22,14 @@ void Gyroscope::steeringWheelTurning() {
 
   if (yaw < -ang){ //Se o volante está virado para direita
     if (last_state != 'r'){  //Se não estava ANTES virado
-      right_cont++; //Incrementa o contador de giros da direita
+      right_count++; //Incrementa o contador de giros da direita
       last_state = 'r'; //Define o last_state da próxima iteração
     }
   }
 
   else if (yaw > ang){ //Se o volante está virado para esquerd
     if (last_state != 'l'){  //Se não estava ANTES virado
-      left_cont++;  //Incrementa o contador de giros da esquerda
+      left_count++;  //Incrementa o contador de giros da esquerda
       last_state = 'l';  //Define o last_state da próxima iteração
     }
   }

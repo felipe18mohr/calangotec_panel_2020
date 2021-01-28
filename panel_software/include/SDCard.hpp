@@ -1,3 +1,6 @@
+#ifndef SDCARD_HPP
+#define SDCARD_HPP
+
 #include <Arduino.h>
 #include <SPI.h>
 #include <SD.h>
@@ -17,3 +20,5 @@ class SDCard {
     int last_millis;
 
 };
+
+#endif

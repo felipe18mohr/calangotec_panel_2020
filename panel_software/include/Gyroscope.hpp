@@ -9,7 +9,7 @@ class Gyroscope{
   public:
     Gyroscope(double ang1, double ang2);
     void steeringWheelTurning();
-    int left_cont, right_cont;
+    int left_count, right_count;
 
   private:
     MPU6050 mpu6050;

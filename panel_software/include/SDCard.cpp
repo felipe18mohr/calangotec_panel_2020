@@ -27,7 +27,7 @@ bool SDCard::initSDCard(const int chip_select) {
   return true;
 }
 
-bool SDCard::savePeriodically(int hour, int minute, int second, int cont_left, int cont_right, byte fuel_level, float velocity, float accel) {
+bool SDCard::savePeriodically(int hour, int minute, int second, int cont_right, int cont_left, byte fuel_level, float velocity, float accel) {
   
   if (millis() - last_millis >= save_period) {
     String dataString = "-=-";
